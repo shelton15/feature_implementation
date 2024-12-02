@@ -1,23 +1,30 @@
+import 'package:feature_implementation/Views/dashboard/dashboard_view.dart';
 import 'package:flutter/material.dart';
+import 'Views/Auth/login_view.dart';
+import 'Views/Dashboard/dashboard_view.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const DimplesPayApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class DimplesPayApp extends StatelessWidget {
+  const DimplesPayApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckdModeBanner: false,
+      debugShowCheckedModeBanner: false,
       title: 'Feature Implementation',
+      initialRoute: '/',
+      routes: {
+        '/':(context) => LoginView(),
+        '/dashboard':(context) => DashboardView(),
+      },
       // theme: ThemeData(
       //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       //   useMaterial3: true,
       // ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }

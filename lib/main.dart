@@ -1,4 +1,3 @@
-import 'package:feature_implementation/Views/dashboard/dashboard_view.dart';
 import 'package:flutter/material.dart';
 import 'Views/Auth/login_view.dart';
 import 'Views/Dashboard/dashboard_view.dart';
@@ -19,7 +18,7 @@ class DimplesPayApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/':(context) => LoginView(),
-        '/dashboard':(context) => DashboardView(),
+        '/Dashboard':(context) => DashboardView(),
       },
       // theme: ThemeData(
       //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

@@ -1,15 +1,12 @@
-class NFCModel {
+class NFCCard {
   final String cardId;
-  final String status;
   final double balance;
 
-  NFCModel({required this.cardId, required this.status, this.balance = 0.0});
+  NFCCard({required this.cardId, required this.balance});
 
-  factory NFCModel.fromJson(Map<String, dynamic> json) {
-    return NFCModel(
-      cardId: json['card_id'],
-      status: json['status'],
-      balance: json.containsKey('card_balance') ? json['card_balance'].toDouble() : 0.0,
-    );
+  factory NFCCard.fromJson(Map<String, dynamic> json) {
+    return NFCCard(
+      cardId: json['card_id'], 
+      balance: json['card_balance']);
   }
 }

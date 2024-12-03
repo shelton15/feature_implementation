@@ -1,15 +1,12 @@
-class GiftCardModel {
-  final int id;
-  final String name;
+class GiftCard {
+  final String id;
   final double value;
 
-  GiftCardModel({required this.id, required this.name, required this.value});
+  GiftCard({required this.id, required this.value});
 
-  factory GiftCardModel.fromJson(Map<String, dynamic> json) {
-    return GiftCardModel(
-      id: json['id'],
-      name: json['name'],
-      value: json['value'].toDouble(),
-    );
+  factory GiftCard.fromJson(Map<String, dynamic> json) {
+    return GiftCard(
+      id: json['id'], 
+      value: json['value']);
   }
 }

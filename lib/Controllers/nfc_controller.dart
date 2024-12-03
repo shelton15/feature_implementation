@@ -1,15 +1,19 @@
-import '../Services/api_service.dart';
+import '../Providers/nfc_provider.dart';
 
-class NFCController {
-  Future<bool> activateNFC(String cardId) async {
-    return await ApiService().activateNFC(cardId);
+class NfcCardController {
+  final NfcProvider nfcProvider;
+
+  NfcCardController({required this.nfcProvider});
+
+  Future<void> activateCard() async {
+    await nfcProvider.activateNfcCard();
   }
 
-  Future<double?> topUpCard(double amount) async {
-    return await ApiService().topUpNFC(amount);
+  Future<void> topUpCard(double amount) async {
+    await nfcProvider.topUpNfcCard(amount);
   }
 
-  Future<double?> deductCard(double amount, String pin) async {
-    return await ApiService().deductNFC(amount, pin);
+  Future<void> deductCard(double amount) async {
+    await nfcProvider.deductFromNfcCard(amount);
   }
 }

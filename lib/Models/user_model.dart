@@ -1,13 +1,13 @@
-class User {
-  final int userId;
+class UserModel {
   final String token;
+  final int userId;
 
-  User({required this.userId, required this.token});
+  UserModel({required this.token, required this.userId});
 
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      userId: json['user_id'],
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(
       token: json['token'],
+      userId: json['user_id'],
     );
   }
 }

@@ -1,11 +1,11 @@
-class Wallet {
+class WalletModel {
   final double balance;
 
-  Wallet({required this.balance});
+  WalletModel({required this.balance});
 
-  factory Wallet.fromJson(Map<String, dynamic> json) {
-    return Wallet(
-      balance: json['balance'],
-      );
+  factory WalletModel.fromJson(Map<String, dynamic> json) {
+    return WalletModel(
+      balance: json['balance'].toDouble(),
+    );
   }
 }

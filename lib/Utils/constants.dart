@@ -1,1 +1,1 @@
-const apiBaseUrl = "https://yourapi.com";
+const baseUrl = 'https://mockapi.com';

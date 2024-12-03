@@ -1,15 +1,15 @@
-import '../Services/api_service.dart';
+import '../Providers/gift_card_provider.dart';
 
 class GiftCardController {
-  Future<List<dynamic>> fetchGiftCards() async {
-    return await ApiService().getGiftCards();
+  final GiftCardProvider giftCardProvider;
+
+  GiftCardController({required this.giftCardProvider});
+
+  Future<void> fetchGiftCards() async {
+    await giftCardProvider.fetchGiftCards();
   }
 
-  Future<bool> purchaseGiftCard(double amount) async {
-    return await ApiService().purchaseGiftCard(amount);
-  }
-
-  Future<bool> redeemGiftCard(String code) async {
-    return await ApiService().redeemGiftCard(code);
+  Future<void> redeemGiftCard(String code) async {
+    await giftCardProvider.redeemGiftCard(code);
   }
 }

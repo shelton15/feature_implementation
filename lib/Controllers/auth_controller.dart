@@ -1,7 +1,11 @@
-import '../services/authentication_service.dart';
+import '../Providers/auth_provider.dart';
 
 class AuthController {
-  Future<String?> login(String email, String password) async {
-    return await AuthenticationService().login(email, password);
+  final AuthProvider authProvider;
+
+  AuthController({required this.authProvider});
+
+  Future<void> login(String email, String password) async {
+    await authProvider.login(email, password);
   }
 }

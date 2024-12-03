@@ -1,40 +1,36 @@
 import 'package:flutter/material.dart';
-import '../../Controllers/auth_controller.dart';
+import 'package:provider/provider.dart';
+import '../Providers/auth_provider.dart';
+
 
 class LoginView extends StatelessWidget {
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _authController = AuthController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   LoginView({super.key});
-
-  void _login(BuildContext context) async {
-    final email = _emailController.text.trim();
-    final password = _passwordController.text.trim();
-
-    try {
-      final user = await _authController.login(email, password);
-      Navigator.pushNamed(context, "/dashboard", arguments: user);
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login failed!")));
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Login')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            TextField(controller: _emailController, decoration: InputDecoration(labelText: "Email")),
-            TextField(
-              controller: _passwordController,
-              decoration: InputDecoration(labelText: "Password"),
-              obscureText: true,
+            TextField(controller: emailController, decoration: const InputDecoration(labelText: 'Email')),
+            TextField(controller: passwordController, decoration: const InputDecoration(labelText: 'Password'), obscureText: true),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () async {
+                try {
+                  await context.read<AuthProvider>().login(emailController.text, passwordController.text);
+                  Navigator.pushNamed(context, '/dashboard');
+                } catch (error) {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Login Failed')));
+                }
+              },
+              child: const Text('Login'),
             ),
-            SizedBox(height: 16),
-            ElevatedButton(onPressed: () => _login(context), child: Text("Login"))
           ],
         ),
       ),

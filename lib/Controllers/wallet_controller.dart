@@ -1,11 +1,15 @@
-import '../Services/api_service.dart';
+import '../Providers/wallet_provider.dart';
 
 class WalletController {
-  Future<double?> fetchWalletBalance() async {
-    return await ApiService().getWalletBalance();
+  final WalletProvider walletProvider;
+
+  WalletController({required this.walletProvider});
+
+  Future<void> fetchBalance() async {
+    await walletProvider.fetchWalletBalance();
   }
 
-  Future<double?> topUpWallet(double amount) async {
-    return await ApiService().topUpWallet(amount);
+  Future<void> topUp(double amount) async {
+    await walletProvider.topUpWallet(amount);
   }
 }

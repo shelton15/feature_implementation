@@ -6,6 +6,8 @@ class LoginView extends StatelessWidget {
   final _passwordController = TextEditingController();
   final _authController = AuthController();
 
+  LoginView({super.key});
+
   void _login(BuildContext context) async {
     final email = _emailController.text.trim();
     final password = _passwordController.text.trim();
